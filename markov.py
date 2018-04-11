@@ -54,8 +54,13 @@ def make_text(chains):
         # it would run for a very long time.
 
         word = choice(chains[key])
-        words.append(word)
-        key = (key[1], word)
+        
+        if len(word) + len(" ".join(words)) < 140:
+            words.append(word)
+            key = (key[1], word)
+
+        else:
+            break
 
     return " ".join(words)
 
@@ -67,9 +72,6 @@ def tweet(chains):
     # Note: you must run `source secrets.sh` before running this file
     # to make sure these environmental variables are set.
 
-    pass
-
-
 # Get the filenames from the user through a command line prompt, ex:
 # python markov.py green-eggs.txt shakespeare.txt
 filenames = sys.argv[1:]
@@ -79,6 +81,8 @@ text = open_and_read_file(filenames)
 
 # Get a Markov chain
 chains = make_chains(text)
-
 # Your task is to write a new function tweet, that will take chains as input
 # tweet(chains)
+markov_tweet = make_text(chains)
+
+send_tweet = tweet(markov_tweet)
