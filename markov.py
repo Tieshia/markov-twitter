@@ -4,6 +4,22 @@ import os
 import sys
 from random import choice
 import twitter
+import pprint
+
+def get_user_tweets(user):
+    """ Creates a list of tweets for a specific user."""
+
+    api = twitter.Api(
+        consumer_key=os.environ['TWITTER_CONSUMER_KEY'],
+        consumer_secret=os.environ['TWITTER_CONSUMER_SECRET'],
+        access_token_key=os.environ['TWITTER_ACCESS_TOKEN_KEY'],
+        access_token_secret=os.environ['TWITTER_ACCESS_TOKEN_SECRET'])
+
+    api.VerifyCredentials()
+
+    statuses = api.GetUserTimeline(screen_name=user)
+
+    return statuses
 
 
 def open_and_read_file(filenames):
@@ -97,11 +113,13 @@ def tweet(chains):
 filenames = sys.argv[1:]
 
 # Open the files and turn them into one long string
-text = open_and_read_file(filenames)
+# text = open_and_read_file(filenames)
 
 # Get a Markov chain
-chains = make_chains(text)
+# chains = make_chains(text)
 # Your task is to write a new function tweet, that will take chains as input
 # tweet(markov_tweet)
-make_text(chains)
-send_tweet = tweet(chains)
+# make_text(chains)
+# send_tweet = tweet(chains)
+user_tweets = get_user_tweets('@BillNye')
+pprint.pprint(user_tweets)
