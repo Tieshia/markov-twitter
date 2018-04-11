@@ -45,6 +45,10 @@ def make_text(chains):
     """Take dictionary of Markov chains; return random text."""
 
     key = choice(chains.keys())
+
+    while key[0][0].isupper() is False:
+        key = key = choice(chains.keys())
+
     words = [key[0], key[1]]
     while key in chains:
         # Keep looping until we have a key that isn't in the chains
@@ -72,19 +76,19 @@ def tweet(chains):
     # Note: you must run `source secrets.sh` before running this file
     # to make sure these environmental variables are set.
 
-    # api = twitter.Api(
-    #     consumer_key=os.environ['TWITTER_CONSUMER_KEY'],
-    #     consumer_secret=os.environ['TWITTER_CONSUMER_SECRET'],
-    #     access_token_key=os.environ['TWITTER_ACCESS_TOKEN_KEY'],
-    #     access_token_secret=os.environ['TWITTER_ACCESS_TOKEN_SECRET'])
+    api = twitter.Api(
+        consumer_key=os.environ['TWITTER_CONSUMER_KEY'],
+        consumer_secret=os.environ['TWITTER_CONSUMER_SECRET'],
+        access_token_key=os.environ['TWITTER_ACCESS_TOKEN_KEY'],
+        access_token_secret=os.environ['TWITTER_ACCESS_TOKEN_SECRET'])
 
-    # api.VerifyCredentials()
+    api.VerifyCredentials()
 
     continue_tweeting = True
 
     while continue_tweeting != "q":
-        status = make_text(chains)
-        print status
+        status = api.PostUpdate(make_text(chains))
+        print status.text
         continue_tweeting = raw_input("\nEnter to tweet again [q to quit] > ")
 
 
@@ -99,4 +103,5 @@ text = open_and_read_file(filenames)
 chains = make_chains(text)
 # Your task is to write a new function tweet, that will take chains as input
 # tweet(markov_tweet)
+make_text(chains)
 send_tweet = tweet(chains)
