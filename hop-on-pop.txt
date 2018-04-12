@@ -9,7 +9,8 @@ ALL BALL We all play ball.
 BALL WALL Up on a wall.
 ALL FALL Fall off the wall.
 DAY PLAY We play all day.
-NIGHT FIGHT We fight all night.HE ME He is after me.
+NIGHT FIGHT We fight all night.
+HE ME He is after me.
 HIM JIM Jim is after him.
 SEE BEE We see a bee.
 SEE BEE THREE Now we see three.
@@ -26,7 +27,8 @@ NO PAT NO Don’t sit on that.
 SAD DAD BAD HAD Dad is sad.
 Very, very sad.
 He had a bad day. What a day Dad had!
-THING THING What is that thing?THING SING That thing can sing!
+THING THING What is that thing?
+THING SING That thing can sing!
 SONG LONG A long, long song.
 Good-by, Thing. You sing too long.
 WALK WALK We like to walk.
@@ -40,7 +42,8 @@ Pup up. Brown down.
 Pup is down. Where is Brown?
 WHERE IS BROWN? THERE IS BROWN!
 Mr. Brown is out of town.
-BACK BLACK Brown came back.Brown came back with Mr. Black.
+BACK BLACK Brown came back.
+Brown came back with Mr. Black.
 SNACK SNACK Eat a snack.
 Eat a snack with Brown and Black.
 JUMP BUMP He jumped. He bumped.

@@ -5,6 +5,7 @@ import sys
 from random import choice
 import twitter
 import pprint
+import string
 
 def get_user_tweets(user):
     """ Creates a list of tweets for a specific user."""
@@ -82,6 +83,12 @@ def make_text(chains):
         else:
             break
 
+    if words[-1][-1] not in ['.', '!', '?']:
+        for i in range(1, (len(words))):
+            if words[-i][-1] in {'.', '!', '?'}:
+                del words[(-i + 1):]
+                break
+
     return " ".join(words)
 
 
@@ -113,12 +120,13 @@ def tweet(chains):
 filenames = sys.argv[1:]
 
 # Open the files and turn them into one long string
-# text = open_and_read_file(filenames)
+text = open_and_read_file(filenames)
 
 # Get a Markov chain
-# chains = make_chains(text)
-# Your task is to write a new function tweet, that will take chains as input
-# tweet(chains)
+chains = make_chains(text)
 
-user_tweets = get_user_tweets('@Bal1oonicornJo')
-print user_tweets[1:]
+# Your task is to write a new function tweet, that will take chains as input
+tweet(chains)
+
+# user_tweets = get_user_tweets('@Bal1oonicornJo')
+# print user_tweets[1:]
