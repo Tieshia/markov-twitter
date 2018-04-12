@@ -19,7 +19,7 @@ def get_user_tweets(user):
 
     statuses = api.GetUserTimeline(screen_name=user)
 
-    return statuses
+    return statuses[0][1:].text
 
 
 def open_and_read_file(filenames):
@@ -118,8 +118,7 @@ filenames = sys.argv[1:]
 # Get a Markov chain
 # chains = make_chains(text)
 # Your task is to write a new function tweet, that will take chains as input
-# tweet(markov_tweet)
-# make_text(chains)
-# send_tweet = tweet(chains)
-user_tweets = get_user_tweets('@BillNye')
-pprint.pprint(user_tweets)
+# tweet(chains)
+
+user_tweets = get_user_tweets('@Bal1oonicornJo')
+print user_tweets[1:]
